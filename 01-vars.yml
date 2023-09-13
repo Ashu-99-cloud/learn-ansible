@@ -4,3 +4,17 @@
     - name: Print Hello World
       ansible.builtin.debug:
         msg: Hello World
+
+
+- name: Demo on vars
+  hosts: localhost
+  vars:
+    URL: example.com
+  tasks:
+    - name: Print a variable
+      ansible.builtin.debug:
+        msg: "{{ URL }}"
+## Give the variable in double/single quotes, Good to give variable in double/single quotes, Because it will fail in some scenario
+##  if quotes are not provided.
+# In the key: value, if the value is just variable or if the values starts with variable then it will fail.
+
