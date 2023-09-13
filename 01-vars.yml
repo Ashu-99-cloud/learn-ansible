@@ -18,12 +18,18 @@
 ##  if quotes are not provided.
 # In the key: value, if the value is just variable or if the values starts with variable then it will fail.
 
-- name: Demo on vars
+- name: Demo on task level vars
   hosts: localhost
+  vars:
+    URL: play.example.com
   tasks:
     - name: Print a variable
       ansible.builtin.debug:
         msg: "{{ URL }}"
       vars:
-        URL: example.com
+        URL: task.example.com
+
+    - name: Print a variable
+      ansible.builtin.debug:
+        msg: "{{ URL }}"
 
