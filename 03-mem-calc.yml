@@ -2,7 +2,7 @@
   hosts: localhost
   tasks:
     - name: Get memory
-      ansible.builtin.shell: free | grep Mem xargs
+      ansible.builtin.shell: free | grep Mem | xargs
       register: free
 
     - name: Set a fact
@@ -13,6 +13,7 @@
       ansible.builtin.set_fact:
         total: "{{ FREE[1] }}"
         free: "{{ FREE[3] }}"
+        used_mem: "{{ 100 - (free|int / total|int * 100) }}"
 
     - name: Print free output
       ansible.builtin.debug:
