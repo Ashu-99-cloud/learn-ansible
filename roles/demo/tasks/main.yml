@@ -4,5 +4,5 @@
 
 - name: Copy file
   ansible.builtin.copy:
-    src: text.txt
+    src: test.txt
     dest: /tmp/test.txt
